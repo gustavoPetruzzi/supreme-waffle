@@ -127,7 +127,7 @@ void mostrarUna(EPersona persona)
 {
     if(persona.estado == 1)
     {
-        printf("%s\t\t%d\t\t%d\n", persona.nombre, persona.edad, persona.dni);
+        printf("%s\t%d\t%d\n", persona.nombre, persona.edad, persona.dni);
     }
     else
     {
@@ -208,6 +208,75 @@ int pedirDatos(int* edad, int* dni,char* nombre)
     }
     else
     {
-        return 1;
+        return -1;
     }
+}
+
+void extraerDatosEdades(EPersona lista[], int edades[],int cantidadItems)
+{
+    int i;
+    int menoresDieciocho = 0;
+    int DiecinueveYtreintaCinco = 0;
+    int mayoresTreintaCinco = 0;
+    for(i=0; i<cantidadItems; i++)
+    {
+        if(lista[i].estado == 1)
+        {
+            if(lista[i].edad < 18)
+            {
+                menoresDieciocho = menoresDieciocho + 1;
+            }
+            else if(lista[i].edad > 35)
+            {
+                mayoresTreintaCinco = mayoresTreintaCinco + 1;
+            }
+            else
+            {
+                DiecinueveYtreintaCinco = DiecinueveYtreintaCinco + 1;
+            }
+        }
+    }
+    edades[0] = menoresDieciocho;
+    edades[1] = DiecinueveYtreintaCinco;
+    edades[2] = mayoresTreintaCinco;
+}
+
+void crearGrafico(int edades[])
+{
+    int i;
+    int j;
+    int max = 0;
+
+    for (i = 0; i < 3; i++)
+    {
+        if(edades[i] > max)
+        {
+            max = edades[i];
+            //flagIsFirst = 0;
+        }
+        /*else if(flagIsFirst)
+        {
+            max = edades[i];
+        }*/
+    }
+
+    for (i = max; i > 0; i--)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            if (edades[j] >= i)
+            {
+                printf("   * ");
+            }
+            else
+            {
+                printf("     ");
+            }
+        }
+
+    putchar('\n');
+    }
+    printf(" < 18 19-35  >35\n");
+
+
 }
