@@ -42,7 +42,7 @@ void mostrarPersona(EPersona persona);
 
 
 /**
-* \brief Solicita un número al usuario y lo valida
+* \brief Solicita un nÃºmero al usuario y lo valida
 * \param input Se carga el numero ingresado
 * \param message Es el mensaje a ser mostrado
 * \param eMessage Es el mensaje a ser mostrado en caso de error
@@ -58,8 +58,8 @@ int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
 * \param input Se carga el string ingresado
 * \param message Es el mensaje a ser mostrado
 * \param eMessage Es el mensaje a ser mostrado en caso de error
-* \param lowLimit Longitud mínima de la cadena
-* \param hiLimit Longitud máxima de la cadena
+* \param lowLimit Longitud mÃ­nima de la cadena
+* \param hiLimit Longitud mÃ¡xima de la cadena
 * \return Si obtuvo la cadena [0] si no [-1]
 *
 */
@@ -95,8 +95,23 @@ void mostrarUna(EPersona persona);
 void mostrarPersonas(EPersona lista[], int cantidadItems);
 
 
-
+/** \brief ordena por nombre los elementos del array
+ *
+ * \param lista array de los datos a ser ordenamos
+ * \param cantidadItems la cantidad de items que tiene el array
+ * \return Nada, ordena los elementos del array por nombre
+ *
+ */
 void ordenarPorNombre(EPersona lista[], int cantidadItems);
 
+
+/** \brief segun el indice que se le da por parametro, borra un elemento
+ *
+ * \param lista array donde busca el elemento a ser borrado
+ * \param indice de los datos que van a ser borrados
+ * \return Nada, borra el elemento segun el indice
+ *
+ */
 void borrarPersona(EPersona lista[], int indice);
-#endif // FUNCIONES_H_INCLUDED
+
+int pedirDatos(int* edad, int* dni,char*nombre);
