@@ -9,7 +9,7 @@ int main()
     char seguir='s';
     int opcion=0;
     int auxIndice;
-    int auxInt[3];
+    int auxInt;
     int edad;
     int dni;
     char nombre[50];
@@ -34,17 +34,15 @@ int main()
                 auxIndice =obtenerEspacioLibre(personas, MAX);
                 if(auxIndice != -1)
                 {
-                    auxInt[0] = getName(nombre, "Ingrese su nombre: ", "ERROR: solo se permiten letras\n", 2, 50);
-                    auxInt[1] = getInt(&edad,"Ingrese su edad: ", "ERROR: solo se permiten numeros entre 2 y 99\n", 2,99);
-                    auxInt[2] = getInt(&dni,"Ingrese su DNI: ", "ERROR: Ingrese el DNI sin .\n", 3,99999999);
-                    if(auxInt[0] != 0 || auxInt[1] != 0 || auxInt[2] != 0)
-                    {
-                        printf("No se han cargado los datos\n");
-                    }
-                    else
+                    auxInt = pedirDatos(&edad, &dni , nombre);
+                    if(auxInt == 0)
                     {
                         personas[auxIndice] = cargarPersona(edad, dni, nombre);
                         isEmpty = 0;
+                    }
+                    else
+                    {
+                        printf("No se han cargado los datos\n");
                     }
                 }
                 else
@@ -58,8 +56,8 @@ int main()
                 system("cls");
                 if(isEmpty== 0)
                 {
-                    auxInt[0] = getInt(&dni, "Ingrese el DNI de la persona a borrar: ", "ERROR: Ingrese el DNI sin .\n", 3,99999999);
-                    if(auxInt[0] != -1)
+                    auxInt = getInt(&dni, "Ingrese el DNI de la persona a borrar: ", "ERROR: Ingrese el DNI sin .\n", 3,99999999);
+                    if(auxInt != -1)
                     {
                         auxIndice = buscarPorDni(personas, MAX, dni);
                         if(auxIndice != -1)
