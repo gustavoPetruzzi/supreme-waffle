@@ -189,3 +189,25 @@ void borrarPersona(EPersona lista[], int indice)
     }
 
 }
+
+int pedirDatos(int* edad, int* dni,char* nombre)
+{
+    int auxInt[3];
+    int auxEdad;
+    int auxDni;
+    char auxNombre[50];
+    auxInt[0] = getName(auxNombre, "Ingrese su nombre: ", "ERROR: solo se permiten letras\n", 2, 50);
+    auxInt[1] = getInt(&auxEdad,"Ingrese su edad: ", "ERROR: solo se permiten numeros entre 2 y 99\n", 2,99);
+    auxInt[2] = getInt(&auxDni,"Ingrese su DNI: ", "ERROR: Ingrese el DNI sin .\n", 3,99999999);
+    if(auxInt[0] == 0 && auxInt[1] == 0 && auxInt[2] == 0)
+    {
+        *edad = auxEdad;
+        *dni = auxDni;
+        strcpy(nombre, auxNombre);
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
