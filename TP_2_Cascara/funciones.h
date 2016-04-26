@@ -23,7 +23,7 @@ void initArray( EPersona lista[], int );
  * Obtiene el primer indice libre del array.
  * @param lista el array se pasa como parametro.
  * @param cantidadItems la cantidad total de items
- * @return el primer indice disponible o -1 si no hay espacio libre
+ * @return el primer indice disponible o [-1] si no hay espacio libre
  */
 int obtenerEspacioLibre(EPersona lista[], int );
 
@@ -34,7 +34,7 @@ int obtenerEspacioLibre(EPersona lista[], int );
  * @param dni el dni a ser buscado en el array.
  * @param cantidadItems la cantidad total de items
  * @return el indice en donde se encuentra el elemento que coincide con el parametro dni
-   o -1 si no existe.
+   o [-1] si no existe.
  */
 int buscarPorDni(EPersona lista[], int cantidadItems, int dni);
 
@@ -114,4 +114,35 @@ void ordenarPorNombre(EPersona lista[], int cantidadItems);
  */
 void borrarPersona(EPersona lista[], int indice);
 
+
+/** \brief Pide al usuario los datos pasados por parametro
+ *
+ * \param *edad direccion de memoria se va a guardar la edad pedida al usuario
+ * \param *dni direccion de memoria se va a guardar el dni pedido al usuario
+ * \param *nombre direccion de memoria se va a guardar el nombre pedido al usuario
+ * \return devuelve [0] si se logro pedir todo y [-1] si no
+ *
+ */
 int pedirDatos(int* edad, int* dni,char*nombre);
+
+
+/** \brief Extrae las edades de un array de estructuras y los guarda en un array de enteros
+ *
+ * \param lista De donde extrae los datos
+ * \param edades array de enteros donde guarda los datos
+ * \param cantidadItems la cantidad de items que tiene el array
+ * \return Nada, solamente guarda los datos en el array edades
+ *
+ */
+void extraerDatosEdades(EPersona lista[], int edades[], int cantidadItems);
+
+
+/** \brief Crea un grafico a partir de los datos pasados por parametros
+ * \param edades array que utiliza para crear el grafico
+ * \return Nada, imprime por pantalla el grafico.
+ *
+ */
+
+void crearGrafico(int edades[]);
+
+#endif // FUNCIONES_H_INCLUDED
