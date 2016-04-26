@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funciones.h"
-#define MAX 20
+#define MAX 10
 
 
 int main()
@@ -14,6 +14,7 @@ int main()
     int dni;
     char nombre[50];
     int isEmpty = 1;
+    int auxArray[3];
     EPersona personas[MAX];
 
     initArray(personas, MAX);
@@ -81,12 +82,16 @@ int main()
             case 3:
                 system("cls");
                 ordenarPorNombre(personas, MAX);
-                printf("Nombre\t\tEdad\t\tDNI\n");
+                printf("Nombre\tEdad\tDNI\n");
                 mostrarPersonas(personas, MAX);
                 system("pause");
                 system("cls");
                 break;
             case 4:
+                extraerDatosEdades(personas, auxArray, MAX);
+                crearGrafico(auxArray);
+                system("pause");
+                system("cls");
                 break;
             case 5:
                 seguir = 'n';
