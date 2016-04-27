@@ -36,10 +36,15 @@ int main()
                 if(auxIndice != -1)
                 {
                     auxInt = pedirDatos(&edad, &dni , nombre);
-                    if(auxInt == 0)
+                    auxArray[1]= buscarPorDni(personas, MAX, dni);
+                    if(auxInt == 0 && auxArray[1] == -1)
                     {
                         personas[auxIndice] = cargarPersona(edad, dni, nombre);
                         isEmpty = 0;
+                    }
+                    else if(auxArray[1] != -1)
+                    {
+                        printf("Ya existe alguien con ese dni!\n");
                     }
                     else
                     {
@@ -82,13 +87,15 @@ int main()
             case 3:
                 system("cls");
                 ordenarPorNombre(personas, MAX);
-                printf("Nombre\tEdad\tDNI\n");
+                printf("Nombre--Edad--DNI\n");
                 mostrarPersonas(personas, MAX);
                 system("pause");
                 system("cls");
                 break;
             case 4:
+                system("cls");
                 extraerDatosEdades(personas, auxArray, MAX);
+                printf(" G R A F I C O\n\n\n");
                 crearGrafico(auxArray);
                 system("pause");
                 system("cls");
