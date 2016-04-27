@@ -127,7 +127,7 @@ void mostrarUna(EPersona persona)
 {
     if(persona.estado == 1)
     {
-        printf("%s\t%d\t%d\n", persona.nombre, persona.edad, persona.dni);
+        printf("%s--%d--%d--\n", persona.nombre, persona.edad, persona.dni);
     }
     else
     {
